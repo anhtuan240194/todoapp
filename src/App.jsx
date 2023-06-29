@@ -10,29 +10,45 @@ export function TodoApp() {
     {
       id: 1,
       title: "Công việc 1",
-      completed: true
+      completed: true,
     },
     {
       id: 2,
       title: "Công việc 2",
-      completed: false
-    }
+      completed: false,
+    },
   ]);
-  function filterTodos(){
+  const [filter, setFilter] = useState("All");
 
+ 
+  /**
+   * @param {valueProps} value - là 1 chuỗi string truyền vào
+   */
+  function onChangeFilter(value) {
+    setFilter(value);
   }
-  function onSubmit(input){
-    const newTodos = [...todos, {id:todos.length + 1, title:input, completed: false} ];
+
+  function onSubmit(input) {
+    const newTodos = [
+      ...todos,
+      { id: todos.length + 1, title: input, completed: false },
+    ];
     setTodos(newTodos);
-    console.log(newTodos)
-  }
+  };
+
+  const filterTodos = 
+  filter === "All" ? todos 
+  : filter === "In active" ? todos.filter((todo) => !todo.completed)
+  : todos.filter((todo)=> todo.completed);
+  
+
   return (
     <div className="todo-app">
       <h1>Todo App</h1>
       <InputAddTodo onSubmit={onSubmit} />
-      <FilterTodo />
+      <FilterTodo onChange={onChangeFilter} />
       <ListTodoItem todos={filterTodos} />
-      <FooterTodo />
+      <FooterTodo todos={todos} />
     </div>
   );
 }

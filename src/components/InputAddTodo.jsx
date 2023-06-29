@@ -18,7 +18,7 @@ export default function InputAddTodo({ onSubmit }) {
           onChange={(e) => setInput(e.target.value)}
         />
         <Button type="submit" variant="contained" className="add-todo">
-          Add
+          Thêm
         </Button>
       </form>
     );
