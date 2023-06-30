@@ -1,47 +1,75 @@
 .add-todo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 #main {
-    width: 100%;
-    position: absolute;
-    display: block;
-    height: 100%;
-    background: linear-gradient(45deg, #5090e3, #62d5d0, #d552ff);
+  width: 100%;
+  position: absolute;
+  display: block;
+  height: 100%;
+  background: linear-gradient(45deg, #5090e3, #62d5d0, #d552ff);
 }
 .todo-app {
-    padding: 1rem;
-    background: #fff;
-    margin: 0 auto;
-    position: absolute;
-    left: 50%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0px rgb(0 0 0 / 66%);
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
+  padding: 1rem;
+  background: #fff;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0px rgb(0 0 0 / 66%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
 }
 .input-todo {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 .tab-todo {
-    margin: 0.5rem 0;
-    justify-content: flex-end;
+  margin: 0.5rem 0;
+  justify-content: flex-end;
 }
 .total-todo {
-    display: flex;
-    margin-top: 1rem;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
 .item-todo {
-    padding: 3px;
-    display: block !important;
-    margin: 0 !important;
-    background: #f4f4f4;
-    border-radius: 3px;
+  padding: 3px;
+  display: block !important;
+  margin: 0 !important;
+  background: #f4f4f4;
+  border-radius: 3px;
 }
 .item-todo span {
-    vertical-align: middle;
+  vertical-align: middle;
+}
+.remove_todo {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  text-align: center;
+  line-height: 48px;
+  height: 100%;
+  top: 0;
+  cursor: pointer;
+  padding: 0 15px;
+  background: #ed4a4a;
+  color: #fff;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+.item_list_todos {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.item_list_todos:hover .remove_todo {
+  transform: translateX(0);
+  opacity: 1;
+}
+.clear-todo {
+  background: #ed4a4a;
 }

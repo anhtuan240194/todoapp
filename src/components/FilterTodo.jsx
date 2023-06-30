@@ -1,5 +1,10 @@
 import { RadioGroup, FormControlLabel, Radio } from "@mui/material";
 
+/**
+ * Tab lọc công việc. Cần phải đưa vào 1 function để khi state thay đổi sẽ thay đổi todos
+ *
+ * @param {onChange} onChange - Là 1 function xử lý sự kiện
+ */
 export default function FilterTodo({ onChange }) {
   return (
     <RadioGroup
@@ -7,7 +12,7 @@ export default function FilterTodo({ onChange }) {
       className="tab-todo"
       row
       onChange={(e) => {
-        onChange(e.target.value)
+        onChange(e.target.value);
       }}
     >
       <FormControlLabel value="All" control={<Radio />} label="Tất cả" />
