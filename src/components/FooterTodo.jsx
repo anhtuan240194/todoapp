@@ -5,12 +5,16 @@ import { Button } from "@mui/material";
  *
  * @param {todos} todos - Mảng các object todos
  */
-export default function FooterTodo({ todos }) {
-  const num = todos.filter((todo) => !todo.completed).length;
+export default function FooterTodo({ todos, removeAllTodos }) {
+  const num = todos.filter((todo) => !todo.completed).length || 0;
   return (
     <div className="total-todo">
       <span className="total">You have {num} pending todos</span>
-      <Button variant="contained" className="clear-todo">
+      <Button
+        variant="contained"
+        className="clear-todo"
+        onClick={removeAllTodos}
+      >
         Xóa tất cả
       </Button>
     </div>

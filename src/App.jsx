@@ -67,6 +67,9 @@ export function TodoApp() {
     newTodos.splice(index, 1);
     setTodos(newTodos);
   }
+  function removeAllTodos() {
+    setTodos([])
+  }
   return (
     <div className="todo-app">
       <h1>Todo App</h1>
@@ -77,7 +80,7 @@ export function TodoApp() {
         checkTodoItem={checkTodoItem}
         removeTodo={removeTodo}
       />
-      <FooterTodo todos={todos} />
+      <FooterTodo todos={todos} removeAllTodos={removeAllTodos}/>
     </div>
   );
 }
