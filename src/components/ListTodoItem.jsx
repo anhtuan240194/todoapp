@@ -1,5 +1,8 @@
 import { FormControlLabel, Checkbox } from "@mui/material";
-export default function ListTodoItem({ todos, checkTodoItem, removeTodo }) {
+import { useTodo } from "../hooks/useTodo";
+
+export default function ListTodoItem({ checkTodoItem, removeTodo }) {
+  const {todos} = useTodo();
   const items = todos.map((todo) => (
     <div className="item_list_todos" key={todo.id} id={todo.id}>
       <FormControlLabel

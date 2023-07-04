@@ -1,10 +1,14 @@
 import { TextField, Button } from "@mui/material";
 import { useState } from "react";
-export default function InputAddTodo({ onSubmit }) {
+import {useTodo} from "../hooks/useTodo"
+
+export default function InputAddTodo() {
   const [input, setInput] = useState("");
+  const {createTodo} = useTodo();
+  
   function handleSubmit(e) {
     e.preventDefault();
-    onSubmit(input);
+    createTodo(input); //Tạo mới todo, hàm này lấy trong TodoPRovider
     setInput("");
   }
   return (
