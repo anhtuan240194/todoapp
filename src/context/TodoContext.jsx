@@ -18,15 +18,41 @@ export const todoReducer = (state, action) => {
         title: action.payload.input,
         status: false,
       };
-      return { 
-      ...state, 
-      todos: [...state.todos, newTodo] };
-    }
-    case "CHANGE_FILTER" : {
       return {
         ...state,
-        selectedFilterOption: action.payload.option
+        todos: [...state.todos, newTodo],
       };
+    }
+    case "CHANGE_FILTER": {
+      return {
+        ...state,
+        selectedFilterOption: action.payload.option,
+      };
+    }
+    case "TOGGLE_STATUS": {
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload.id
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        ),
+      };
+    }
+    case "REMOVE_TODO": {
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload.id),
+      };
+    }
+    case "CLEAR_TODO": {
+      return {
+        ...state,
+        todos: [],
+      };
+    }
+    default: {
+      return state;
     }
   }
 };
@@ -48,7 +74,28 @@ export default function TodoProvider({ children }) {
       type: "CHANGE_FILTER",
       payload: {option}
     })
+  };
+
+  const toggleStatus = (id) => {
+    dispatch({
+      type: "TOGGLE_STATUS",
+      payload: { id },
+    });
+  };
+
+  const removeTodo = (id) => {
+    dispatch({
+      type: "REMOVE_TODO",
+      payload:{id}
+    })
   }
+
+  const removeAllTodos = () => {
+    dispatch({
+      type:"CLEAR_TODO"
+    })
+  }
+
   const filteredTodos = 
   state.selectedFilterOption === "All" 
   ? state.todos 
@@ -61,7 +108,10 @@ export default function TodoProvider({ children }) {
       value={{
         todos: filteredTodos,
         createTodo,
+        toggleStatus,
         changeFilter,
+        removeAllTodos,
+        removeTodo,
         selectedFilterOption: state.selectedFilterOption
       }}
     >

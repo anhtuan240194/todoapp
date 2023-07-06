@@ -6,8 +6,8 @@ import {useTodo} from "../hooks/useTodo"
  *
  * @param {todos} todos - Mảng các object todos
  */
-export default function FooterTodo({ removeAllTodos }) {
-  const {todos} = useTodo();
+export default function FooterTodo() {
+  const { todos, removeAllTodos } = useTodo();
   const num = todos.filter((todo) => !todo.completed).length || 0;
   return (
     <div className="total-todo">
